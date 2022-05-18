@@ -5,6 +5,6 @@ namespace Kafka.Producer.Interfaces
 {
 	internal interface ISampleProducer
 	{
-		public Task ProduceAsync(ProducerConfig config, Message message);
+		public Task ProduceAsync(IProducer<Null, Message> producer, Message message);
 	}
 }

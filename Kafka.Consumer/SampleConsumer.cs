@@ -7,11 +7,8 @@ namespace Kafka.Consumer
 {
 	internal class SampleConsumer : ISampleConsumer
 	{
-		public async Task SubscribeAsync(string topicName, ConsumerConfig config)
+		public async Task SubscribeAsync(string topicName, IConsumer<Ignore, Message> consumer)
 		{
-            using var consumer = new ConsumerBuilder<Ignore, Message>(config)
-            .SetValueDeserializer(new CustomValueDeserializer<Message>())
-            .Build();
             consumer.Subscribe(topicName);
 
             var cts = new CancellationTokenSource();
